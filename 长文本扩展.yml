@@ -1,0 +1,1144 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 长文本扩展
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.6@dd589dc093c8084925858034ab5ec1fdf0d33819f43226c2f8c4a749a9acbbb2
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables:
+  - description: 整篇文章历史章节的人物、信息、风格、角色、经历的汇总方便之后故事完整性与延续性
+    id: 62e1e3a2-e24a-4da7-b860-14370b05af25
+    name: beijing
+    selector:
+    - conversation
+    - beijing
+    value: ''
+    value_type: string
+  - description: ''
+    id: 43e4559e-eb3d-44d7-881c-f6fc7ca46b93
+    name: history
+    selector:
+    - conversation
+    - history
+    value: ''
+    value_type: string
+  - description: ''
+    id: 60656aa1-a5fd-4081-be54-c62090dc2f47
+    name: tmp_agen
+    selector:
+    - conversation
+    - tmp_agen
+    value: ''
+    value_type: string
+  - description: ''
+    id: 72aa75c8-3fce-464a-919d-87aca4aa3fe0
+    name: zhuti
+    selector:
+    - conversation
+    - zhuti
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: agent
+      id: 1760427237672-source-1760424919504-target
+      selected: false
+      source: '1760427237672'
+      sourceHandle: source
+      target: '1760424919504'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: assigner
+      id: 1760423158675-source-1760427237672-target
+      selected: false
+      source: '1760423158675'
+      sourceHandle: source
+      target: '1760427237672'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: answer
+      id: 1760434259008-source-answer-target
+      source: '1760434259008'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: assigner
+      id: 1760424919504-source-1760461741884-target
+      selected: false
+      source: '1760424919504'
+      sourceHandle: source
+      target: '1760461741884'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: code
+      id: 1760461741884-source-1760462664818-target
+      selected: false
+      source: '1760461741884'
+      sourceHandle: source
+      target: '1760462664818'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1760462664818-source-1760434259008-target
+      selected: false
+      source: '1760462664818'
+      sourceHandle: source
+      target: '1760434259008'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: iteration-start
+        targetType: parameter-extractor
+      id: 1760434259008start-source-1760510933760-target
+      source: 1760434259008start
+      sourceHandle: source
+      target: '1760510933760'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: iteration-start
+        targetType: code
+      id: 1760434259008start-source-1760512063387-target
+      source: 1760434259008start
+      sourceHandle: source
+      target: '1760512063387'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: http-request
+        targetType: code
+      id: 1760459222259-source-1760514426260-target
+      source: '1760459222259'
+      sourceHandle: source
+      target: '1760514426260'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: code
+        targetType: llm
+      id: 1760514426260-source-1760518627740-target
+      source: '1760514426260'
+      sourceHandle: source
+      target: '1760518627740'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: llm
+        targetType: code
+      id: 1760518627740-source-1760519606720-target
+      source: '1760518627740'
+      sourceHandle: source
+      target: '1760519606720'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: code
+        targetType: assigner
+      id: 1760519606720-source-1760518298786-target
+      source: '1760519606720'
+      sourceHandle: source
+      target: '1760518298786'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: code
+        targetType: llm
+      id: 1760512063387-source-1760520051415-target
+      source: '1760512063387'
+      sourceHandle: source
+      target: '1760520051415'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: llm
+        targetType: assigner
+      id: 1760520051415-source-1760522551503-target
+      source: '1760520051415'
+      sourceHandle: source
+      target: '1760522551503'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: assigner
+        targetType: code
+      id: 1760522551503-source-1760526745037-target
+      source: '1760522551503'
+      sourceHandle: source
+      target: '1760526745037'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        sourceType: code
+        targetType: http-request
+      id: 1760526745037-source-1760459222259-target
+      source: '1760526745037'
+      sourceHandle: source
+      target: '1760459222259'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 写作风格
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: writing_style
+        - default: ''
+          hint: ''
+          label: 主题
+          max_length: 200
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: zhuti
+        - default: ''
+          hint: ''
+          label: 目的
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: mudi
+        - default: ''
+          hint: ''
+          label: 人物
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: renwu
+        - default: ''
+          hint: ''
+          label: 字数
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: zishu
+      height: 192
+      id: '1760423158675'
+      position:
+        x: 1131.1010764681969
+        y: -257.1863452722493
+      positionAbsolute:
+        x: 1131.1010764681969
+        y: -257.1863452722493
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#conversation.history#}}'
+        selected: false
+        title: 最终输出
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 2370.9148594212484
+        y: -204.04712458420977
+      positionAbsolute:
+        x: 2370.9148594212484
+        y: -204.04712458420977
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: '你是一个专业的创意策划与文本结构规划智能体，擅长将抽象主题转化为逻辑清晰的内容蓝图。
+
+              你的目标是帮助后续的写作模型理解整篇文本的结构、语气和重点。
+
+              请你在行动前先思考：
+
+              1. 用户提供的主题、目的、涉及人物；
+
+              2. 目标读者是谁；
+
+              3. 哪些内容维度最适合展开。
+
+              4. 输出主题一定要经过风格统一性验证再进行输出
+
+              在思考完成后，你应输出一个主题拆解结构 JSON，包含每个部分的标题、重点、逻辑关系。
+
+              '
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: deepseek-chat
+              model_type: llm
+              provider: langgenius/deepseek/deepseek
+              type: model-selector
+          query:
+            type: constant
+            value: "请根据以下输入信息，进行合理的主题拆解：\n- 主题（zhuti）:{{#1760423158675.zhuti#}}\n\
+              - 目的（mudi）: {{#1760423158675.mudi#}}\n- 涉及人物/对象（renwu）: {{#1760423158675.renwu#}}\n\
+              - 期望风格（writing_style）:{{#1760423158675.writing_style#}}\n- 总字数(字数) :{{#1760423158675.zishu#}}\n\
+              \n请完成以下任务：\n1. 先用简短说明（50字内）总结文本的核心目标；\n2. 拆分出 3-6 个核心子主题；\n3. 对每个子主题进行如下结构化输出：\n\
+              \   {\n     \"title\": \"子主题标题\",\n     \"summary\": \"该部分要表达的核心思想\"\
+              ,\n     \"purpose_link\": \"它如何服务于整体目的\",\n     \"style_hint\": \"建议使用的语气/节奏\"\
+              ,\n     \"estimated_length\": \"建议字数范围（例如800-1200字）\"\n   }\n\n请输出符合\
+              \ JSON 结构的整体规划结果，不要生成多余解释。\n"
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 主要用于对文本风格的一致性校验
+              parameters: {}
+              provider_name: 0bd84b4a-c2aa-4faf-95a2-db509e7786b0
+              provider_show_name: Tool-StyleChecker
+              schemas: []
+              settings: {}
+              tool_description: 主要用于对文本风格的一致性校验
+              tool_label: Tool-StyleChecker
+              tool_name: Tool_StyleChecker
+              type: workflow
+        agent_strategy_label: ReAct
+        agent_strategy_name: ReAct
+        agent_strategy_provider_name: langgenius/agent/agent
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        plugin_unique_identifier: langgenius/agent:0.0.24@0274c08e62efaa28f6327e7bdba655e16559ec28d4f41f2fa3ef553e6327c0f6
+        selected: false
+        title: 智能审查
+        tool_node_version: '2'
+        type: agent
+      height: 88
+      id: '1760424919504'
+      position:
+        x: 1399.649001387906
+        y: -242.6287674333134
+      positionAbsolute:
+        x: 1399.649001387906
+        y: -242.6287674333134
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1760423158675'
+          - zhuti
+          variable_selector:
+          - conversation
+          - zhuti
+          write_mode: over-write
+        selected: false
+        title: 主题广播
+        type: assigner
+        version: '2'
+      height: 84
+      id: '1760427237672'
+      position:
+        x: 1399.649001387906
+        y: -327.46705864074045
+      positionAbsolute:
+        x: 1399.649001387906
+        y: -327.46705864074045
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        error_handle_mode: terminated
+        height: 428
+        is_parallel: false
+        iterator_input_type: array[object]
+        iterator_selector:
+        - '1760462664818'
+        - subtopics
+        output_selector:
+        - '1760514426260'
+        - answer
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1760434259008start
+        title: 无限制输出
+        type: iteration
+        width: 1605
+      height: 428
+      id: '1760434259008'
+      position:
+        x: 1111.0770164474643
+        y: 49.87215180292722
+      positionAbsolute:
+        x: 1111.0770164474643
+        y: 49.87215180292722
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1605
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1760434259008start
+      parentId: '1760434259008'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1135.0770164474643
+        y: 117.87215180292722
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - type: text
+            value: "{\n  \"inputs\": {\n    \"zhuti\": \"{{#1760512063387.summary#}}\"\
+              ,\n    \"zishu\": \"{{#1760512063387.estimated_length#}}\",\n     \"\
+              beijing\": \"{{#1760526745037.beijing#}}\"\n  },\n  \"query\": \"请基于\
+              \ inputs 中的主题和目标字数，按预设风格扩写一段文本。\",\n  \"response_mode\": \"blocking\"\
+              ,\n  \"conversation_id\": \"\",\n  \"user\": \"abc-1234\"\n}"
+          type: raw-text
+        headers: 'Authorization:Bearer app-q2E9Iu6GSZDH2HpWkvbxYWeF
+
+          Content-Type:application/json'
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: true
+        ssl_verify: true
+        timeout:
+          connect: 300
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 300
+          write: 300
+        title: 续写生成
+        type: http-request
+        url: http://117.50.218.247/v1/chat-messages
+        variables: []
+      height: 137
+      id: '1760459222259'
+      parentId: '1760434259008'
+      position:
+        x: 788.1240723192941
+        y: 76.2238159336425
+      positionAbsolute:
+        x: 1899.2010887667584
+        y: 126.09596773656972
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1760424919504'
+          - text
+          variable_selector:
+          - conversation
+          - tmp_agen
+          write_mode: over-write
+        selected: false
+        title: 全局围栏
+        type: assigner
+        version: '2'
+      height: 84
+      id: '1760461741884'
+      position:
+        x: 1690.1624489104915
+        y: -289.5995788733958
+      positionAbsolute:
+        x: 1690.1624489104915
+        y: -289.5995788733958
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(data: str):\n    try:\n        obj = json.loads(data)\
+          \  # 解析字符串为字典\n    except Exception as e:\n        return {\"error\": f\"\
+          JSON解析失败: {e}\", \"subtopics\": []}\n\n    subs = obj.get(\"subtopics\"\
+          , [])\n    if not isinstance(subs, list):\n        subs = [subs] if subs\
+          \ else []\n\n    return {\"subtopics\": subs}\n"
+        code_language: python3
+        outputs:
+          subtopics:
+            children: null
+            type: array[object]
+        selected: false
+        title: 转换格式
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - tmp_agen
+          value_type: string
+          variable: data
+      height: 52
+      id: '1760462664818'
+      position:
+        x: 1668.3080266019401
+        y: -122.87215379545556
+      positionAbsolute:
+        x: 1668.3080266019401
+        y: -122.87215379545556
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: 数字范围
+          name: estimated_length
+          required: false
+          type: string
+        - description: 故事背景与目的
+          name: purpose_link
+          required: false
+          type: string
+        - description: 故事章节主题
+          name: summary
+          required: false
+          type: string
+        - description: 整篇故事的主体内容
+          name: title
+          required: false
+          type: string
+        query:
+        - '1760434259008'
+        - item
+        reasoning_mode: prompt
+        selected: false
+        title: 参数智能提取
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 88
+      id: '1760510933760'
+      parentId: '1760434259008'
+      position:
+        x: 129.1141936508193
+        y: 66.88580634918067
+      positionAbsolute:
+        x: 1240.1912100982836
+        y: 116.75795815210789
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        code: "def main(item: dict):\n    # 容错：有的场景 item 可能是字符串\n    import json\n\
+          \    if isinstance(item, str):\n        try:\n            item = json.loads(item)\n\
+          \        except Exception:\n            item = {}\n\n    title = item.get(\"\
+          title\", \"\")\n    summary = item.get(\"summary\", \"\")\n    purpose_link\
+          \ = item.get(\"purpose_link\", \"\")\n    style_hint = item.get(\"style_hint\"\
+          , \"\")\n    estimated_length = item.get(\"estimated_length\", \"\")\n\n\
+          \    # \"800-1000\" -> 800；\"600\" -> 600；解析失败则 0\n    try:\n        est_num\
+          \ = int(estimated_length.split('-')[0]) if '-' in estimated_length else\
+          \ int(estimated_length)\n    except Exception:\n        est_num = 0\n\n\
+          \    return {\n        \"title\": title,\n        \"summary\": summary,\n\
+          \        \"purpose_link\": purpose_link,\n        \"style_hint\": style_hint,\n\
+          \        \"estimated_length\": estimated_length,\n        \"estimated_length_num\"\
+          : est_num\n    }"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        outputs:
+          estimated_length:
+            children: null
+            type: string
+          estimated_length_num:
+            children: null
+            type: number
+          purpose_link:
+            children: null
+            type: string
+          style_hint:
+            children: null
+            type: string
+          summary:
+            children: null
+            type: string
+          title:
+            children: null
+            type: string
+        selected: false
+        title: 关键信息解析
+        type: code
+        variables:
+        - value_selector:
+          - '1760434259008'
+          - item
+          value_type: object
+          variable: item
+      height: 52
+      id: '1760512063387'
+      parentId: '1760434259008'
+      position:
+        x: 129.1141936508193
+        y: 193.88580634918065
+      positionAbsolute:
+        x: 1240.1912100982836
+        y: 243.75795815210788
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(body_str: str):\n    try:\n        # 第一次解析：把整个返回体从字符串解析成\
+          \ dict\n        body_json = json.loads(body_str)\n    except Exception:\n\
+          \        return {\"answer\": \"无法解析 body\"}\n\n    # 提取 answer 字段\n    answer_raw\
+          \ = body_json.get(\"answer\", \"\")\n\n    # 第二次解析：把 Unicode 字符串转换成正常汉字\n\
+          \    try:\n        # 用 json.loads 再解一次即可\n        answer_decoded = json.loads(f'\"\
+          {answer_raw}\"')\n    except Exception:\n        answer_decoded = answer_raw\n\
+          \n    return {\"answer\": answer_decoded}\n"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        outputs:
+          answer:
+            children: null
+            type: string
+        selected: false
+        title: 扩写内容解析
+        type: code
+        variables:
+        - value_selector:
+          - '1760459222259'
+          - body
+          value_type: string
+          variable: body_str
+      height: 52
+      id: '1760514426260'
+      parentId: '1760434259008'
+      position:
+        x: 799.7148936206854
+        y: 284.15143032900795
+      positionAbsolute:
+        x: 1910.7919100681497
+        y: 334.0235821319352
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1760519606720'
+          - result
+          variable_selector:
+          - conversation
+          - history
+          write_mode: over-write
+        iteration_id: '1760434259008'
+        selected: false
+        title: 变量传递
+        type: assigner
+        version: '2'
+      height: 84
+      id: '1760518298786'
+      parentId: '1760434259008'
+      position:
+        x: 1325.0238421675235
+        y: 142.82962733584085
+      positionAbsolute:
+        x: 2436.100858614988
+        y: 192.70177913876807
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: f0f66d96-f936-4fe3-a40a-45811d72bed2
+          role: system
+          text: '你是一位格式处理大师，请根据每篇文章整体大纲内容和当前章节的信息对当前文本进行格式化处理。要求是markdow语法格式输出，注意仅输出主体内容不要输出额外信息。当前文章整体大纲是：{{#1760424919504.text#}}
+            当前章节是：{{#1760512063387.summary#}}，当前章节的标题是：{{#1760512063387.title#}}当前章节内容是：{{#1760514426260.answer#}}
+            ,仅对当前内容章节和章节标题组合起来做适当的markdown语法格式调整，禁止其他输出。例如
+
+            ## 当前章节标题 ##
+
+            ```json 文章主体内容输出 ```
+
+            '
+        selected: false
+        title: 结构处理LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1760518627740'
+      parentId: '1760434259008'
+      position:
+        x: 1070.591449619304
+        y: 74.81749475449678
+      positionAbsolute:
+        x: 2181.6684660667684
+        y: 124.689646557424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        code: "\ndef main(history: str, text: str):\n    return {\n        \"result\"\
+          : history + text,\n    }\n"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 文本汇总
+        type: code
+        variables:
+        - value_selector:
+          - '1760518627740'
+          - text
+          value_type: string
+          variable: text
+        - value_selector:
+          - conversation
+          - history
+          value_type: string
+          variable: history
+      height: 52
+      id: '1760519606720'
+      parentId: '1760434259008'
+      position:
+        x: 1097.889545365767
+        y: 276.46976457567814
+      positionAbsolute:
+        x: 2208.9665618132312
+        y: 326.34191637860533
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 644f7c15-1aaa-44ce-ba83-6d851b568a5a
+          role: system
+          text: '你是一位作家，请根据每篇文章整体大纲内容和当前章节的信息对当前文本进行关键信息记录内容，包括但不限于角色、时间、主要角色经历、行为等关键信息记录。当前文章整体大纲是：{{#1760424919504.text#}}
+            历史内容信息是{{#conversation.history#}} ,请将以上信息整理出合适的文本信息作为之后续写的背景支撑，不需要任何语法格式只要单纯的文本即可
+
+            '
+        selected: false
+        title: 背景整理归纳
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1760520051415'
+      parentId: '1760434259008'
+      position:
+        x: 144.30566072462875
+        y: 275.2368176184408
+      positionAbsolute:
+        x: 1255.382677172093
+        y: 325.108969421368
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1760520051415'
+          - text
+          variable_selector:
+          - conversation
+          - beijing
+          write_mode: over-write
+        iteration_id: '1760434259008'
+        selected: false
+        title: 背景赋值
+        type: assigner
+        version: '2'
+      height: 84
+      id: '1760522551503'
+      parentId: '1760434259008'
+      position:
+        x: 446.7100312803934
+        y: 65
+      positionAbsolute:
+        x: 1557.7870477278577
+        y: 114.87215180292722
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        code: "import json\nimport re\n\ndef main(beijing: str):\n    \"\"\"\n   \
+          \ 清理文本，保证在 Dify HTTP 节点中发送时为合法 JSON 字符串\n    \"\"\"\n\n    # 如果 beijing\
+          \ 不是字符串，先转成字符串\n    if not isinstance(beijing, str):\n        beijing =\
+          \ str(beijing)\n\n    # 去掉控制字符（防止隐藏符号导致 400）\n    beijing = re.sub(r'[\\\
+          x00-\\x1f\\x7f]', '', beijing)\n\n    # 去掉多余空白（前后）\n    beijing = beijing.strip()\n\
+          \n    # 使用 json.dumps 进行安全转义（这一步最关键）\n    # ensure_ascii=False 让中文保持原样，不会变成\
+          \ \\uXXXX\n    safe_beijing = json.dumps(beijing, ensure_ascii=False)\n\n\
+          \    # json.dumps 会在首尾加双引号，需要去掉\n    if safe_beijing.startswith('\"') and\
+          \ safe_beijing.endswith('\"'):\n        safe_beijing = safe_beijing[1:-1]\n\
+          \n    return {\n        \"beijing\": safe_beijing\n    }\n"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1760434259008'
+        outputs:
+          beijing:
+            children: null
+            type: string
+        selected: false
+        title: 背景信息处理
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - beijing
+          value_type: string
+          variable: beijing
+      height: 52
+      id: '1760526745037'
+      parentId: '1760434259008'
+      position:
+        x: 430.9665690048964
+        y: 266.6991094431879
+      positionAbsolute:
+        x: 1542.0435854523607
+        y: 316.5712612461151
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        author: muyan
+        desc: ''
+        height: 543
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"1、按照主题进行遍历生成","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"2、通过内嵌循环进行之后的内容扩充","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"3、整体数据结构的输出处理","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          14px;"}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 1683
+      height: 543
+      id: '1760539268996'
+      position:
+        x: 1052.6715212437614
+        y: -35.80003126714006
+      positionAbsolute:
+        x: 1052.6715212437614
+        y: -35.80003126714006
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1683
+    - data:
+        author: muyan
+        desc: ''
+        height: 350
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"1、进行主题内容创建","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"2、对主题进行广播拆解方便后续变量的使用","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"3、通过全局广播主题变量方便后续对正题内容进行把控","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"4、处理数据格式方便之后的内容迭代使用","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          14px;"}}'
+        theme: cyan
+        title: ''
+        type: ''
+        width: 1038
+      height: 350
+      id: '1760539399180'
+      position:
+        x: 1063.3595811558714
+        y: -392.61679176541537
+      positionAbsolute:
+        x: 1063.3595811558714
+        y: -392.61679176541537
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1038
+    - data:
+        author: muyan
+        desc: ''
+        height: 345
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"1、整体内容追加输出","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"2、内容可以直接复制输出到最终输出中","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"3、可以引入MCP等多种方式方便之后的输出整理","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          14px;"}}'
+        theme: cyan
+        title: ''
+        type: ''
+        width: 624
+      height: 345
+      id: '1760539500817'
+      position:
+        x: 2101.317345570762
+        y: -392.61679176541537
+      positionAbsolute:
+        x: 2101.317345570762
+        y: -392.61679176541537
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 624
+    viewport:
+      x: -579.7465252601435
+      y: 250.85936908978425
+      zoom: 0.6851755622329627
+  rag_pipeline_variables: []

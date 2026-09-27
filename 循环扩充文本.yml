@@ -1,0 +1,601 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 循环扩充文本
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.6@dd589dc093c8084925858034ab5ec1fdf0d33819f43226c2f8c4a749a9acbbb2
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 7a9d78e7-81a0-429c-b449-25b50e6f5e9f
+    name: zishu
+    selector:
+    - conversation
+    - zishu
+    value: 0
+    value_type: integer
+  - description: ''
+    id: f77dbc8d-2cec-446c-a8d4-b2fbfc778867
+    name: tetx_new
+    selector:
+    - conversation
+    - tetx_new
+    value: ''
+    value_type: string
+  - description: ''
+    id: fbed9847-277c-4388-b57e-5b14f983b439
+    name: history
+    selector:
+    - conversation
+    - history
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: loop
+        targetType: answer
+      id: 1760445968865-source-answer-target
+      source: '1760445968865'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        sourceType: loop-start
+        targetType: llm
+      id: 1760445968865start-source-1760445984897-target
+      source: 1760445968865start
+      sourceHandle: source
+      target: '1760445984897'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        sourceType: code
+        targetType: if-else
+      id: 1760445993058-source-1760445998217-target
+      source: '1760445993058'
+      sourceHandle: source
+      target: '1760445998217'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        sourceType: if-else
+        targetType: loop-end
+      id: 1760445998217-true-1760446020784-target
+      source: '1760445998217'
+      sourceHandle: 'true'
+      target: '1760446020784'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        sourceType: llm
+        targetType: assigner
+      id: 1760445984897-source-1760446443912-target
+      source: '1760445984897'
+      sourceHandle: source
+      target: '1760446443912'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        sourceType: assigner
+        targetType: code
+      id: 1760446443912-source-1760445993058-target
+      source: '1760446443912'
+      sourceHandle: source
+      target: '1760445993058'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1760445962285-source-1760446567388-target
+      selected: false
+      source: '1760445962285'
+      sourceHandle: source
+      target: '1760446567388'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: loop
+      id: 1760446567388-source-1760445968865-target
+      selected: false
+      source: '1760446567388'
+      sourceHandle: source
+      target: '1760445968865'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 主体内容
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: zhuti
+        - default: ''
+          hint: ''
+          label: zishu
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: zishu
+        - default: 当前为第一轮暂无背景信息
+          hint: ''
+          label: beijing
+          max_length: 5000
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: beijing
+      height: 138
+      id: '1760445962285'
+      position:
+        x: 692.6996172696138
+        y: 18.92318988446793
+      positionAbsolute:
+        x: 692.6996172696138
+        y: 18.92318988446793
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#conversation.history#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: answer
+      position:
+        x: 1251.564061169044
+        y: 63.17336980993727
+      positionAbsolute:
+        x: 1251.564061169044
+        y: 63.17336980993727
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        break_conditions: []
+        error_handle_mode: terminated
+        height: 298
+        logical_operator: and
+        loop_count: 30
+        selected: false
+        start_node_id: 1760445968865start
+        title: 循环扩充内容
+        type: loop
+        width: 883
+      height: 298
+      id: '1760445968865'
+      position:
+        x: 654.6450084040443
+        y: 360.9590207314907
+      positionAbsolute:
+        x: 654.6450084040443
+        y: 360.9590207314907
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 883
+      zIndex: 1
+    - data:
+        desc: ''
+        isInLoop: true
+        selected: false
+        title: ''
+        type: loop-start
+      draggable: false
+      height: 48
+      id: 1760445968865start
+      parentId: '1760445968865'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 678.6450084040443
+        y: 428.9590207314907
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-loop-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 6b4dd88e-e003-411d-bf4e-47573863f194
+          role: system
+          text: 请格根据主题{{#1760445962285.zhuti#}}与整个内容的背景{{#1760445962285.beijing#}}和历史生成内容{{#conversation.history#}}进行扩写整体字数大概在{{#1760446567388.zishu#}}，扩写内容要有故事递进性，需要推动整个故事节奏的发展。注意只做核心内容输出，禁止其他信息的输出。
+        selected: false
+        title: 文章扩充节点
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1760445984897'
+      parentId: '1760445968865'
+      position:
+        x: 98.69510203110679
+        y: 65
+      positionAbsolute:
+        x: 753.3401104351511
+        y: 425.9590207314907
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "\ndef main(arg1: str):\n    return {\n        \"result\": len(arg1),\n\
+          \    }\n"
+        code_language: python3
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        outputs:
+          result:
+            children: null
+            type: number
+        selected: false
+        title: 节点统计
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - history
+          value_type: string
+          variable: arg1
+      height: 50
+      id: '1760445993058'
+      parentId: '1760445968865'
+      position:
+        x: 353.76351350205437
+        y: 65
+      positionAbsolute:
+        x: 1008.4085219060987
+        y: 425.9590207314907
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: ≥
+            id: b27a5f94-3574-4082-98e0-48e2fdd93fe2
+            numberVarType: variable
+            value: '{{#1760446567388.zishu#}}'
+            varType: number
+            variable_selector:
+            - '1760445993058'
+            - result
+          id: 'true'
+          logical_operator: and
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 122
+      id: '1760445998217'
+      parentId: '1760445968865'
+      position:
+        x: 353.71301718269024
+        y: 151
+      positionAbsolute:
+        x: 1008.3580255867346
+        y: 511.9590207314907
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1760445968865'
+        selected: false
+        title: 退出循环
+        type: loop-end
+      height: 53
+      id: '1760446020784'
+      parentId: '1760445968865'
+      position:
+        x: 593.2054440441598
+        y: 107.51790212467824
+      positionAbsolute:
+        x: 1247.8504524482041
+        y: 468.4769228561689
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-simple
+      width: 244
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1760445984897'
+          - text
+          variable_selector:
+          - conversation
+          - history
+          write_mode: over-write
+        loop_id: '1760445968865'
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 82
+      id: '1760446443912'
+      parentId: '1760445968865'
+      position:
+        x: 97.32452099251589
+        y: 169.6971585292914
+      positionAbsolute:
+        x: 751.9695293965602
+        y: 530.6561792607821
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "def main(text: str, zishu: str):\n    n = int(zishu.split('-')[0])\
+          \ if '-' in zishu else int(zishu)\n    return {\"text\": text, \"zishu\"\
+          : n, \"history\": \"\",\"new\": \"\"}"
+        code_language: python3
+        outputs:
+          history:
+            children: null
+            type: string
+          new:
+            children: null
+            type: string
+          text:
+            children: null
+            type: string
+          zishu:
+            children: null
+            type: number
+        selected: false
+        title: 变量声明
+        type: code
+        variables:
+        - value_selector:
+          - '1760445962285'
+          - zhuti
+          value_type: string
+          variable: text
+        - value_selector:
+          - '1760445962285'
+          - zishu
+          value_type: string
+          variable: zishu
+      height: 50
+      id: '1760446567388'
+      position:
+        x: 692.6996172696138
+        y: 163.42269092653112
+      positionAbsolute:
+        x: 692.6996172696138
+        y: 163.42269092653112
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        author: muyan
+        desc: ''
+        height: 335
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"1、上层主题传入","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"2、历史背景迭代","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"3、当前主题内容的字数范围","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          14px;"}}'
+        theme: cyan
+        title: ''
+        type: ''
+        width: 405
+      height: 335
+      id: '1760540897596'
+      position:
+        x: 654.6450084040443
+        y: -87.484727151248
+      positionAbsolute:
+        x: 654.6450084040443
+        y: -87.484727151248
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 405
+    - data:
+        author: muyan
+        desc: ''
+        height: 413
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"1、单节点文本扩充，实现长文本整体控制","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"2、对整体文案长度控制防止文本长度难以控制","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          14px;"}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 986
+      height: 413
+      id: '1760540915489'
+      position:
+        x: 654.6450084040443
+        y: 262.8666268669177
+      positionAbsolute:
+        x: 654.6450084040443
+        y: 262.8666268669177
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 986
+    - data:
+        author: muyan
+        desc: ''
+        height: 326
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"4、开放输出对接给外部使用","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          14px;"}}'
+        theme: cyan
+        title: ''
+        type: ''
+        width: 435
+      height: 326
+      id: '1760540944803'
+      position:
+        x: 1191.0157150731582
+        y: -87.484727151248
+      positionAbsolute:
+        x: 1191.0157150731582
+        y: -87.484727151248
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 435
+    viewport:
+      x: -15.245806146150528
+      y: 198.34069539934006
+      zoom: 0.5899012969078952
+  rag_pipeline_variables: []

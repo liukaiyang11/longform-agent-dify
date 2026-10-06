@@ -83,7 +83,7 @@
 
 ## 📚 相关课程
 
-- 📖 课程文档：[飞书知识库](#)（待补充）
+- 📖 课程文档：[飞书知识库](https://scnxinvxtnbo.feishu.cn/wiki/TLLpw5AuhiRltrk5iLKcU8l2n4d)
 - 🎥 视频教程：[课程链接](#)（待补充）
 
 ---
